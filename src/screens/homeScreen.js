@@ -98,7 +98,7 @@ function Home() {
     try {
       // 소환사 정보를 가공하기 전에 필요한 검사 수행
       const missingDataSummoner = summonersInfo.find(playerInfo => {
-        return !playerInfo.leagueInfo.soloRankTier || playerInfo.championMasteries.length === 0;
+        return !playerInfo.leagueInfo.soloRankTier || playerInfo.championMasteries.length === 0 || playerInfo.individualPositionDistribution.length === 0;
       });
       if (missingDataSummoner) {
         // 필요한 정보가 누락된 경우 경고 메시지 표시

@@ -1,4 +1,5 @@
-import { styles } from '../styles/resultCss'; // 스타일 파일 경로
+//Result.js
+import { styles } from '../styles/resultCss';
 import React, { useState, useEffect, useRef } from 'react';
 import { Image, View, StyleSheet, Text, TouchableOpacity, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -37,7 +38,7 @@ const Result = ({route}) => {
   // 티어를 점수로 변환하는 함수
   const calculateTierScore = (player) => {
     const tiers = {
-      UNRANKED: 13,
+      Unranked: 13,
       IRON: 1,
       BRONZE: 2,
       SILVER: 3,
@@ -49,9 +50,9 @@ const Result = ({route}) => {
     };
     let score;
     const [tierType, divisionOrPoints] = player.tier.split(' ');
-    if (tierType === 'UNRANKED') {
+    if (tierType === 'Unranked') {
       // 언랭크 플레이어의 점수 반환
-      return tiers.UNRANKED;
+      return tiers.Unranked;
     } else if (tierType === 'MASTER' || tierType === 'GRANDMASTER' || tierType === 'CHALLENGER') {
       // 마스터 이상의 티어 점수 계산
       const points = parseInt(divisionOrPoints, 10);
@@ -103,7 +104,7 @@ const Result = ({route}) => {
 
   // 티어 이미지를 가져오는 함수
   const tierImages = {
-    UNRANKED: require('../assets/RankedEmblemsLatest/RankUnknown.png'),
+    Unranked: require('../assets/RankedEmblemsLatest/RankUnknown.png'),
     IRON: require('../assets/RankedEmblemsLatest/RankIron.png'),
     BRONZE: require('../assets/RankedEmblemsLatest/RankBronze.png'),
     SILVER: require('../assets/RankedEmblemsLatest/RankSilver.png'),
@@ -499,13 +500,6 @@ const Result = ({route}) => {
                   <Icon name="casino" size={36} color="#000" />
                 </TouchableOpacity>
               </View>
-              {championImagesBlue.map((image, index) => (
-                <Image
-                  key={index}
-                  source={{ uri: image }}
-                  style={styles.championImagesImage}
-                />
-              ))}
             </View>
           )}
           {/* 레드팀 평균티어 필드 */}
@@ -522,13 +516,6 @@ const Result = ({route}) => {
                   <Icon name="casino" size={36} color="#000" />
                 </TouchableOpacity>
               </View>
-              {championImagesRed.map((image, index) => (
-                <Image
-                  key={index}
-                  source={{ uri: image }}
-                  style={styles.championImagesImage}
-                />
-              ))}
             </View>
           )}
           {optimizedTeamData.map((player, index) => (
@@ -563,10 +550,10 @@ const Result = ({route}) => {
                   {selectedPlayerIndex === index && (
                     <View style={styles.tooltip}>
                       <Text style={styles.tooltipText}>{player.topTwoPreferences}</Text>
-                      {!hasSwapped && player.tier !== 'UNRANKED' && (
+                      {!hasSwapped && player.tier !== 'Unranked' && (
                         <Text style={styles.tooltipText}>{player.adjustedTier}점 (조정됨)</Text>
                       )}
-                      {!hasSwapped && player.tier === 'UNRANKED' && <Text style={styles.tooltipText}>UNRANKED (조정됨)</Text>} 
+                      {!hasSwapped && player.tier === 'Unranked' && <Text style={styles.tooltipText}>Unranked (조정됨)</Text>} 
                     </View>
                   )}
                 </TouchableOpacity>
